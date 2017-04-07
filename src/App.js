@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
-import { ChatForm } from './components'
+import React from 'react'
+import { ChatForm, ChatList } from './components'
 
 const App = () => {
   return (
-    <ChatForm />
+    <div>
+      <ChatForm />
+      <ChatList />
+    </div>
   )
 }
 export default App
