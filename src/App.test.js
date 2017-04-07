@@ -1,8 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { shallow } from 'enzyme'
+
 import App from './App'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
-})
+it('renders <ChatForm /> and <ChatList />')
+it('has empty array for chat list initial state')
+it('has anonymous as initial state for nickname')
+it('has empty string as chat text initial state')
