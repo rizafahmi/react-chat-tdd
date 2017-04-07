@@ -1,12 +1,12 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 import { ChatForm } from './index'
 
 let app
 
 const setup = () => {
-  const wrapper = shallow(<ChatForm />)
+  const wrapper = mount(<ChatForm nickname={'anonymous'} />)
   return wrapper
 }
 
@@ -23,8 +23,12 @@ describe('Renders <ChatForm />', () => {
     const input = app.find('input')
     expect(input.length).toEqual(2)
   })
+  it('received nickname as a prop', () => {
+    const actual = app.prop('nickname')
+    expect(actual).toEqual('anonymous')
+  })
   it('should have a send button')
-  it('received nickname as a prop')
+
   describe('Handle Form Submit', () => {
     it('should called handleFormSubmit when for is submitted')
     it('should append chat list after submisson')
