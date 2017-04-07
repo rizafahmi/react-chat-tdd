@@ -5,7 +5,8 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      chatlist: []
+      chatlist: [],
+      nickname: 'anonymous'
     }
   }
   render () {
