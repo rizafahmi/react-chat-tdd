@@ -24,5 +24,8 @@ it('has empty array for chat list initial state', () => {
   const actual = app.state('chatlist').length
   expect(actual).toEqual(0)
 })
-it('has anonymous as initial state for nickname')
+it('has anonymous as initial state for nickname', () => {
+  const actual = app.state('nickname')
+  expect(actual).toEqual('anonymous')
+})
 it('has empty string as chat text initial state')
