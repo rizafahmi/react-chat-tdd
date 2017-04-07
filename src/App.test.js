@@ -1,7 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import App from './App'
+import App from './App.js'
+import { ChatForm } from './components'
 
 let app
 
@@ -33,4 +34,3 @@ it('has empty string as chat text initial state', () => {
   expect(actual).toBeDefined()
   expect(actual.length).toEqual(0)
 })
-it('should pass nickname to <ChatForm /> as props')
