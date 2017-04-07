@@ -1,12 +1,20 @@
 import React from 'react'
 import { ChatForm, ChatList } from './components'
 
-const App = () => {
-  return (
-    <div>
-      <ChatForm />
-      <ChatList />
-    </div>
-  )
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      chatlist: []
+    }
+  }
+  render () {
+    return (
+      <div>
+        <ChatForm />
+        <ChatList />
+      </div>
+    )
+  }
 }
 export default App
