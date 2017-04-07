@@ -6,7 +6,8 @@ class App extends React.Component {
     super(props)
     this.state = {
       chatlist: [],
-      nickname: 'anonymous'
+      nickname: 'anonymous',
+      text: ''
     }
   }
   render () {

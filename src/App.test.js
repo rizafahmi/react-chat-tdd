@@ -31,6 +31,6 @@ it('has anonymous as initial state for nickname', () => {
 it('has empty string as chat text initial state', () => {
   const actual = app.state('text')
   expect(actual).toBeDefined()
-  expect(actual).toEqual(0)
+  expect(actual.length).toEqual(0)
 })
 it('should pass nickname to <ChatForm /> as props')
