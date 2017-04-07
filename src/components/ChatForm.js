@@ -10,4 +10,8 @@ const ChatForm = (props) => {
   )
 }
 
+ChatForm.propTypes = {
+  nickname: React.PropTypes.string.isRequired
+}
+
 export default ChatForm

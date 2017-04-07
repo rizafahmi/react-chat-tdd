@@ -13,7 +13,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <ChatForm />
+        <ChatForm nickname={this.state.nickname} />
         <ChatList />
       </div>
     )

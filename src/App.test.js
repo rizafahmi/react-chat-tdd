@@ -2,7 +2,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import App from './App.js'
-import { ChatForm } from './components'
 
 let app
 
