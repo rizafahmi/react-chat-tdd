@@ -2,8 +2,16 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import App from './App'
-
-it('renders <ChatForm /> and <ChatList />')
+const setup = () => {
+  const wrapper = shallow(<App />)
+  return wrapper
+}
+it('renders <ChatForm />', () => {
+  const app = setup()
+  const actual = app.find('ChatForm').length
+  expect(actual).toEqual(1)
+})
+it('renders <ChatList />')
 it('has empty array for chat list initial state')
 it('has anonymous as initial state for nickname')
 it('has empty string as chat text initial state')
