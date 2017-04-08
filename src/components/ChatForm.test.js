@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme'
 import { ChatForm } from './index'
 import App from './../App.js'
 
-let app
+let app, wrappedComponent, appMount
 
 const setup = () => {
   const props = {
@@ -13,11 +13,14 @@ const setup = () => {
     handleSubmit: () => {}
   }
   const wrapper = mount(<ChatForm {...props} />)
-  return wrapper
+  const appMount = mount(<App />)
+  return { wrapper, appMount }
 }
 
 beforeEach(() => {
-  app = setup()
+  wrappedComponent = setup()
+  app = wrappedComponent.wrapper
+  appMount = wrappedComponent.appMount
 })
 
 describe('Renders <ChatForm />', () => {
@@ -40,7 +43,7 @@ describe('Renders <ChatForm />', () => {
   })
   it('input text should have prop onChange')
   it('input text trigger handleChange method', () => {
-    const input = app.find('input')
+    const input = app.find('input').last()
     input.simulate('change', {
       event: {
         target: {
@@ -48,8 +51,7 @@ describe('Renders <ChatForm />', () => {
         }
       }
     })
-    const appMount = mount(<App />)
-    expect(appMount.state().text).isEqual('Hi')
+    expect(appMount.state().text).toEqual('Hi')
   })
 
   describe('Handle Form Submit', () => {
