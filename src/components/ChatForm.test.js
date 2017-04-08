@@ -38,7 +38,19 @@ describe('Renders <ChatForm />', () => {
     expect(actual.length).toEqual(1)
     expect(actual.text()).toEqual('Send')
   })
-  it('should trigger onChange')
+  it('input text should have prop onChange')
+  it('input text trigger handleChange method', () => {
+    const input = app.find('input')
+    input.simulate('change', {
+      event: {
+        target: {
+          value: 'Hi'
+        }
+      }
+    })
+    const appMount = mount(<App />)
+    expect(appMount.state().text).isEqual('Hi')
+  })
 
   describe('Handle Form Submit', () => {
     it('should called handleFormSubmit when form is submitted', () => {
