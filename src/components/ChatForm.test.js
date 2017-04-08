@@ -2,11 +2,17 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 
 import { ChatForm } from './index'
+import App from './../App.js'
 
 let app
 
 const setup = () => {
-  const wrapper = mount(<ChatForm nickname={'anonymous'} />)
+  const props = {
+    nickname: 'anonymous',
+    text: '',
+    handleSubmit: () => {}
+  }
+  const wrapper = mount(<ChatForm {...props} />)
   return wrapper
 }
 
@@ -27,10 +33,23 @@ describe('Renders <ChatForm />', () => {
     const actual = app.prop('nickname')
     expect(actual).toEqual('anonymous')
   })
-  it('should have a send button')
+  it('should have a send button', () => {
+    const actual = app.find('button')
+    expect(actual.length).toEqual(1)
+    expect(actual.text()).toEqual('Send')
+  })
+  it('should trigger onChange')
 
   describe('Handle Form Submit', () => {
-    it('should called handleFormSubmit when for is submitted')
+    it('should called handleFormSubmit when form is submitted', () => {
+      const handleFormSubmit = jest.fn()
+      const form = shallow(<form onSubmit={() => handleFormSubmit()} />)
+      expect(form.prop('onSubmit')).toBeDefined()
+      form.simulate('submit')
+      expect(handleFormSubmit).toBeCalled()
+      const mountApp = mount(<App />)
+      expect(mountApp.state().chatlist.length).toEqual(1)
+    })
     it('should append chat list after submisson')
     it('should emptying chat text after submission')
   })
