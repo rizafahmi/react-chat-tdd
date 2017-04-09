@@ -7,13 +7,14 @@ import App from './../App.js'
 let app, wrappedComponent, appMount
 
 const setup = () => {
+  const appMount = mount(<App />)
   const props = {
     nickname: 'anonymous',
     text: '',
-    handleSubmit: () => {}
+    handleSubmit: () => {},
+    handleInputChange: jest.fn()
   }
   const wrapper = mount(<ChatForm {...props} />)
-  const appMount = mount(<App />)
   return { wrapper, appMount }
 }
 
@@ -51,6 +52,8 @@ describe('Renders <ChatForm />', () => {
         }
       }
     })
+    appMount.instance().handleInputChange('Hi')
+    expect(app.prop('handleInputChange')).toHaveBeenCalledTimes(1)
     expect(appMount.state().text).toEqual('Hi')
   })
 
