@@ -4,7 +4,7 @@ const ChatForm = (props) => {
   return (
     <form>
       <input />
-      <input />
+      <input onChange={(event) => props.handleInputChange(event.target.value)} />
       <button>Send</button>
     </form>
   )

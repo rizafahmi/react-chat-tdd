@@ -10,10 +10,15 @@ class App extends React.Component {
       text: ''
     }
   }
+  handleInputChange (text) {
+    this.setState({
+      text
+    })
+  }
   render () {
     return (
       <div>
-        <ChatForm nickname={this.state.nickname} />
+        <ChatForm handleInputChange={(text) => this.handleInputChange(text)} nickname={this.state.nickname} />
         <ChatList />
       </div>
     )
